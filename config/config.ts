@@ -76,6 +76,12 @@ export default defineConfig({
       component: './Customers',
     },
     {
+      name: 'list.table-list',
+      icon: 'table',
+      path: '/hero',
+      component: './item/item',
+    },
+    {
       path: '/',
       redirect: '/welcome',
     },
