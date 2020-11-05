@@ -2,14 +2,14 @@ import { Settings as LayoutSettings } from '@ant-design/pro-layout';
 
 export default {
   navTheme: 'light',
-  // 拂晓蓝
+  headerTheme: 'dark',
   primaryColor: '#1890ff',
   layout: 'mix',
   contentWidth: 'Fluid',
-  fixedHeader: false,
+  fixedHeader: true,
   fixSiderbar: true,
   colorWeak: false,
-  title: 'Ant Design Pro',
+  title: 'GRADHO',
   pwa: false,
   logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
   iconfontUrl: '',
