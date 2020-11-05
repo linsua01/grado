@@ -49,6 +49,12 @@ export default defineConfig({
       component: './Welcome',
     },
     {
+      path: '/customers',
+      name: 'customers',
+      icon: 'user',
+      component: './Customers',
+    },
+    {
       path: '/admin',
       name: 'admin',
       icon: 'crown',
@@ -62,24 +68,6 @@ export default defineConfig({
           component: './Welcome',
         },
       ],
-    },
-    {
-      name: 'list.table-list',
-      icon: 'table',
-      path: '/list',
-      component: './ListTableList',
-    },
-    {
-      name: 'list.table-list',
-      icon: 'table',
-      path: '/customers',
-      component: './Customers',
-    },
-    {
-      name: 'list.table-list',
-      icon: 'table',
-      path: '/hero',
-      component: './item/item',
     },
     {
       path: '/',

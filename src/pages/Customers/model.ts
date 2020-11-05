@@ -1,4 +1,4 @@
-import {Effect, Reducer, Subscription, request} from'umi';
+import {Effect, Reducer, Subscription} from'umi';
 import { queryAll } from './service'
 
 export  interface CustomerModelState  {

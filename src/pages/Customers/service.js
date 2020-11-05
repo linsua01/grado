@@ -1,6 +1,6 @@
 import { request } from 'umi';
 
-const CUSTOMER_API = `http://localhost:1337/customers`;
+const CUSTOMER_API = `http://46.101.114.40:1337/customers`;
 
 export async function query(params) {
     return request(`${CUSTOMER_API}?${qs.stringify(params)}`);
