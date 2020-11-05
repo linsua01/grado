@@ -1,4 +1,7 @@
 import { request } from 'umi';
+import axios from 'axios';
+
+
 
 const CUSTOMER_API = `http://46.101.114.40:1337/customers`;
 
@@ -10,11 +13,16 @@ export async function queryAll() {
     return request(`${CUSTOMER_API}`);
 }
 
-export async function create(params) {
+export async function create1(params) {
+    console.log({...params})
     return request(CUSTOMER_API, {
         method: 'post',
-        body: JSON.stringify(params)
+        body: {...params}
     });
+}
+
+export async function create(params) {
+    return axios.post(CUSTOMER_API,{...params});
 }
 
 export async function modify(params) {
