@@ -40,8 +40,9 @@ const Customers:FC<PageProps>=(props)=>   {
         title: 'Name',
         dataIndex: 'name',
         valueType: 'text',
-        sorter: true,
-        filters : true,         
+        sorter: (a, b) => a.name - b.name,
+        filters : true,      
+        search: false,   
         formItemProps: {
             rules: [
               {
@@ -107,17 +108,21 @@ const Customers:FC<PageProps>=(props)=>   {
         
         <ProTable
           headerTitle='Customers'
-          rowKey={"id"}
-          search = { false }
-          options = { {
-            search : true , 
-          } }
+          search={false}
+          rowKey="key"
+          options={{
+            search: true,
+          }}
           dataSource={props.customers.data}
           columns={columns}
           rowSelection={{
             onChange: (_, selectedRows) => setSelectedRows(selectedRows),
           }}
-          toolBarRender={(_, { selectedRowKeys }) => [
+          toolBarRender={
+            
+            
+            (_, { selectedRowKeys }) => [
+            
             selectedRowKeys?.length ? (
                 <>
                 <Button
@@ -153,6 +158,7 @@ const Customers:FC<PageProps>=(props)=>   {
           }}
           type="form"
           columns={columns}
+          
         />
         </CreateForm>
 
