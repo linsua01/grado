@@ -41,11 +41,7 @@ const Customers:FC<PageProps>=(props)=>   {
         dataIndex: 'name',
         valueType: 'text',
         sorter: true,
-        filters: [
-          { text: 'Lu', value: 'Luciano Insua' },
-          { text: 'New York', value: 'New York' },
-        ],
-        
+        filters : true,         
         formItemProps: {
             rules: [
               {
@@ -58,6 +54,7 @@ const Customers:FC<PageProps>=(props)=>   {
       {
         title: 'Email',
         dataIndex: 'email',
+        valueType: 'text',
         sorter: true,
         formItemProps: {
           rules: [
@@ -73,6 +70,7 @@ const Customers:FC<PageProps>=(props)=>   {
         title: 'State',
         dataIndex: 'state',
         initialValue: 'Active',
+        filters : true,  
         valueEnum: {
           0: { text: 'Active', status: 'Active' },
           1: { text: 'Inactive', status: 'Processing' },
@@ -108,21 +106,43 @@ const Customers:FC<PageProps>=(props)=>   {
       <PageContainer>
         
         <ProTable
-          headerTitle=""
+          headerTitle='Customers'
           rowKey={"id"}
-          search={{
-            labelWidth: 120,
-          }}
+          search = { false }
+          options = { {
+            search : true , 
+          } }
           dataSource={props.customers.data}
           columns={columns}
           rowSelection={{
             onChange: (_, selectedRows) => setSelectedRows(selectedRows),
           }}
-          toolBarRender={() => [
+          toolBarRender={(_, { selectedRowKeys }) => [
+            selectedRowKeys?.length ? (
+                <>
+                <Button
+                  key="3"
+                  onClick={() => {
+                    window.alert(selectedRowKeys.join('-'));
+                  }}
+                >
+                  Send Email
+                </Button>
+                <Button
+                  key="3"
+                  onClick={() => {
+                    window.alert(selectedRowKeys.join('-'));
+                  }}
+                >
+                  Bulk deletion
+                </Button>
+                </>
+              ) : (null),
             <Button type="primary" onClick={() => handleModalVisible(true)}>
               <PlusOutlined /> New
-            </Button>,
+            </Button>
           ]}
+          
           
         />
         <CreateForm onCancel={() => handleModalVisible(false)} modalVisible={createModalVisible}>
