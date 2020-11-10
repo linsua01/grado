@@ -48,7 +48,6 @@ const Login: React.FC<{}> = () => {
       // 登录
       const msg = await fakeAccountLogin({ ...values, type });
       if (msg.status === 'ok') {
-        message.success('登录成功！');
         goto();
         return;
       }
