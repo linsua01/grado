@@ -21,6 +21,8 @@ interface UserModelType {
   },
   effects: {
     getRemote: Effect,
+    create: Effect,
+    edit: Effect,
     delete: Effect,
   },
   subscriptions: {
@@ -57,7 +59,36 @@ const UserModel: UserModelType = {
         }
         
       },
-    
+      *create({payload:values}, { put, call, select }){
+        
+        
+        const data = yield call(create,values)
+        if(data){
+          yield put({
+            type: 'getRemote',
+            payload: {}
+          })
+          message.success('Create Success')
+        }else{
+          message.error('Create Error')
+        }
+      },
+      // 删除
+      
+      *edit({payload:values}, { put, call, select }){
+        
+        const data = yield call(modify,values)
+        console.log(data)
+        if(data){
+          yield put({
+            type: 'getRemote',
+            payload: {}
+          })
+          message.success('Edit Success')
+        }else{
+          message.error('Edit Error')
+        }
+      },
       // 删除
       *delete({payload:{id}}, { put, call, select }){
         

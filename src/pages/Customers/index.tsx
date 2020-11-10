@@ -109,7 +109,7 @@ const Customers:FC<PageProps>=(props)=>   {
         <ProTable
           headerTitle='Customers'
           search={false}
-          rowKey="key"
+          rowKey={'id'}
           options={{
             search: true,
           }}
@@ -126,7 +126,7 @@ const Customers:FC<PageProps>=(props)=>   {
             selectedRowKeys?.length ? (
                 <>
                 <Button
-                  key="3"
+                  key="0"
                   onClick={() => {
                     window.alert(selectedRowKeys.join('-'));
                   }}
@@ -134,7 +134,7 @@ const Customers:FC<PageProps>=(props)=>   {
                   Send Email
                 </Button>
                 <Button
-                  key="3"
+                  key="1"
                   onClick={() => {
                     window.alert(selectedRowKeys.join('-'));
                   }}
@@ -143,7 +143,7 @@ const Customers:FC<PageProps>=(props)=>   {
                 </Button>
                 </>
               ) : (null),
-            <Button type="primary" onClick={() => handleModalVisible(true)}>
+            <Button key="3" type="primary" onClick={() => handleModalVisible(true)}>
               <PlusOutlined /> New
             </Button>
           ]}

@@ -69,12 +69,19 @@ const UserListPage:FC<UserPageProps> = ({ users, dispatch, userListLoading } ) =
   const onFinish = async(values: FormValue) => {
     
     if (record)
-      modify(values)
+      dispatch({
+        type: 'users/edit',
+        payload: values
+      })
+      
     else
-      console.log(values)
-      create(values);
-    resetHandler();
-    setModalVisible(false);
+      dispatch({
+        type: 'users/create',
+        payload: values
+      })
+      setModalVisible(false);
+    //resetHandler();
+    
     /*setConfirmloading(true)
     let id = 0;
     if(record){
@@ -152,7 +159,7 @@ const UserListPage:FC<UserPageProps> = ({ users, dispatch, userListLoading } ) =
             rowKey='id' 
             headerTitle="User List"
             toolBarRender={() => [
-              <Button onClick={addClick}type='primary'>New</Button>
+              <Button key='1' onClick={addClick}type='primary'>New</Button>
             ]}
             columns={columns} 
             dataSource={users.data} 

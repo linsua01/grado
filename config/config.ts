@@ -12,7 +12,7 @@ export default defineConfig({
     hmr: true,
   },
   layout: {
-    name: 'GRADHO',
+    name: 'GRADO',
     locale: true,
     ...defaultSettings,
   },
