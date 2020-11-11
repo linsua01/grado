@@ -1,7 +1,7 @@
 import { request } from 'umi';
 import axios from 'axios';
 
-const CUSTOMER_API = 'http://46.101.114.40:1337/users';
+const CUSTOMER_API = 'https://db.grado.land/users';
 
 export async function query(params) {
     return request(`${CUSTOMER_API}?${params.stringify(params)}`);
@@ -12,20 +12,23 @@ export async function queryAll() {
 }
 
 export async function create(params) {
-    axios.post(CUSTOMER_API,{...params})
-        .then(res => {
-            console.log(res);
-            return res })
-    .catch(err => {
-        console.log(err);
-        return err;
-    })      
+    return axios.post(CUSTOMER_API,{...params})
+        .then(response => { 
+            return response
+        })
+        .catch(error => {
+            return error.response
+        });  
 }
 
 export async function modify(params) {
-    console.log(params);
-    console.log(CUSTOMER_API + '/' + params['id']);
-    return axios.put(CUSTOMER_API + '/' + params['id'],{...params});
+    return axios.put(CUSTOMER_API + '/' + params['id'],{...params})
+        .then(response => { 
+            return response
+        })
+        .catch(error => {
+            return error.response
+        });
 }
 
 export async function del(params) {

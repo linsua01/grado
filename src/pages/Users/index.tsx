@@ -1,12 +1,10 @@
 import React,{ useState, FC } from 'react'
-import styles from './index.less';
-import { Popconfirm, Button, Pagination, message  } from 'antd';
+import { Popconfirm, Button } from 'antd';
 import ProTable, { ProColumns } from '@ant-design/pro-table'; 
-import { queryAll, create, modify, del } from './service'
 import { connect, Dispatch, Loading, UserState } from 'umi'
 import UserModal from './components/UserModal'
 import { SingleUserType, FormValue } from './data.d'
-import { PageContainer, FooterToolbar } from '@ant-design/pro-layout';
+import { PageContainer } from '@ant-design/pro-layout';
 
 interface UserPageProps { 
   users: UserState,
@@ -44,12 +42,9 @@ const UserListPage:FC<UserPageProps> = ({ users, dispatch, userListLoading } ) =
 
   // 删除
   const confirmDelete = () => {
-    const id = record && record.id
     dispatch({
       type: 'users/delete',
-      payload: {
-        id
-      }
+      payload: record
     })    
   }
 

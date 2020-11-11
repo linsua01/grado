@@ -1,15 +1,14 @@
-import React, {FC, useState, useRef} from 'react';    
+import React, {FC, useState} from 'react';    
 import {connect, CustomerModelState, ConnectProps} from 'umi';   
 
 import { PlusOutlined } from '@ant-design/icons';
-import { Button, Divider, Popconfirm, message, Input, Drawer,  } from 'antd';
-import { PageContainer, FooterToolbar } from '@ant-design/pro-layout';
-import ProTable, { ProColumns, ActionType } from '@ant-design/pro-table';
-import ProDescriptions from '@ant-design/pro-descriptions';
+import { Button, Divider, Popconfirm} from 'antd';
+import { PageContainer } from '@ant-design/pro-layout';
+import ProTable, { ProColumns } from '@ant-design/pro-table';
 
 import CreateForm from './components/CreateForm';
-import UpdateForm, { FormValueType } from './components/UpdateForm';
-//import { TableListItem } from './data.d';
+import UpdateForm, {  } from './components/UpdateForm';
+
 import { create } from './service';
 
 

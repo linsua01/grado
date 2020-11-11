@@ -1,6 +1,6 @@
 
 import { Reducer, Effect, Subscription } from 'umi';
-import { queryAll, create, modify, del } from './service'
+import { queryAll, add, edit, del } from '../../services/commonAPI'
 import { message } from 'antd';
 import { SingleUserType } from './data'
 
@@ -48,56 +48,56 @@ const UserModel: UserModelType = {
     effects: {
       // 获取列表数据
       *getRemote({ payload: { page, per_page }}, {put, call}){
-        const data = yield call(queryAll)
+        const data = yield call(queryAll,'users')
+        
         if(data){
           yield put({
             type: 'getList',
             payload: {
-              data: data
+              data: data.data
             }
           })
         }
         
       },
       *create({payload:values}, { put, call, select }){
-        
-        
-        const data = yield call(create,values)
-        if(data){
-          yield put({
-            type: 'getRemote',
-            payload: {}
-          })
-          message.success('Create Success')
-        }else{
-          message.error('Create Error')
+          const data = yield call(add,'users', values);
+          console.log(data);
+          if(data && data.status != '400'){
+            yield put({
+              type: 'getRemote',
+              payload: {}
+            })
+            message.success('Create Success')
+          }else{
+            message.error('Edit Error ' + data.data.message[0].messages[0].message)
         }
       },
-      // 删除
+      
       
       *edit({payload:values}, { put, call, select }){
         
-        const data = yield call(modify,values)
+        const data = yield call(edit,'users',values)
         console.log(data)
-        if(data){
+        if(data && data.status != '400') {
           yield put({
             type: 'getRemote',
             payload: {}
           })
           message.success('Edit Success')
         }else{
-          message.error('Edit Error')
+          message.error('Edit Error ' + data.data.message[0].messages[0].message)
         }
       },
-      // 删除
-      *delete({payload:{id}}, { put, call, select }){
-        
-        const data = yield call(del,{ id })
       
-        if(data){
+      *delete({payload:values}, { put, call, select }){
+        
+        const data = yield call(del, 'users', values )
+      
+        if(data && data.status != '400') {
           yield put({
             type: 'getRemote',
-            payload: {id}
+            payload: {}
           })
           message.success('Delete Success')
         }else{

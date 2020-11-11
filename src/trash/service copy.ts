@@ -1,6 +1,6 @@
 import request, { extend } from 'umi-request';
 import { message } from 'antd';
-import {  FormValue } from './data.d'
+import {  FormValue } from '../pages/Users/data'
 
 const errorHandler = function(error: any) {
   if (error.response) {
