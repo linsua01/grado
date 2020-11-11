@@ -3,7 +3,11 @@ import axios from 'axios';
 
 
 
+<<<<<<< HEAD
 const CUSTOMER_API = `https://db.grado.land/customers`;
+=======
+const CUSTOMER_API = `https://db.gradho.com/customers`;
+>>>>>>> 5b28138b12e5d2d26fdf2bed0ba78dda1b89fa91
 
 export async function query(params) {
     return request(`${CUSTOMER_API}?${qs.stringify(params)}`);
