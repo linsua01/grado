@@ -61,12 +61,6 @@ export default defineConfig({
       component: './Users',
     },
     {
-      path: '/item',
-      name: 'Item',
-      icon: 'user',
-      component: './item',
-    },
-    {
       path: '/admin',
       name: 'admin',
       icon: 'crown',

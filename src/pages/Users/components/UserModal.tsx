@@ -77,7 +77,7 @@ const UserModal:FC<UserModalProps> = (props) => {
                   <Input />
                 </Form.Item>
                 <Form.Item label="Confirmed" name="confirmed" valuePropName='checked'>
-                  <Switch checkedChildren="true" unCheckedChildren="flase" />
+                  <Switch checkedChildren="true" unCheckedChildren="false" />
                 </Form.Item>
               </Form>
             </Modal>

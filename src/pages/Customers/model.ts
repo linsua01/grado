@@ -3,6 +3,9 @@ import { queryAll } from './service'
 
 export  interface CustomerModelState  {
   data: [],
+  total: 0,
+  editorVisible: false,
+  editorType: 'add'
 }     
 
 export  interface  CustomerModelType  {
@@ -21,6 +24,9 @@ const  CustomerModel : CustomerModelType = {
   namespace:'customers', 
   state: {
     data: [],
+    total: 0,
+    editorVisible: false,
+    editorType: 'add'
   } ,
 
   effects: {

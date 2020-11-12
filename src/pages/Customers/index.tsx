@@ -86,7 +86,6 @@ const Customers:FC<PageProps>=(props)=>   {
           <>
             <a onClick={() => {
                 handleModalVisible(true);
-                setStepFormValues(record);
               }}>Edit</a>
             <Divider type="vertical" />
             <Popconfirm

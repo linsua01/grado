@@ -9,7 +9,7 @@ import { PageContainer } from '@ant-design/pro-layout';
 interface UserPageProps { 
   users: UserState,
   dispatch: Dispatch,
-  handleCancle: ()=>void,
+  handleCancel: ()=>void,
   onFinish: (values: FormValue) => void,
   userListLoading: boolean,
   confirmLoading: boolean,
@@ -22,8 +22,8 @@ const UserListPage:FC<UserPageProps> = ({ users, dispatch, userListLoading } ) =
 
   const [record, setRecord] = useState<SingleUserType | null>(null)
   
-  // 关闭modal
-  const handleCancle = () => {
+  
+  const handleCancel = () => {
     setModalVisible(false)
   }
 
@@ -172,7 +172,7 @@ const UserListPage:FC<UserPageProps> = ({ users, dispatch, userListLoading } ) =
 
           <UserModal 
             visible={modalVisible} 
-            handleCancle={handleCancle} 
+            handleCancle={handleCancel} 
             record={record}
             onFinish={onFinish}
             confirmLoading={confirmLoading}
